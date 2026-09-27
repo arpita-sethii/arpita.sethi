@@ -66,14 +66,14 @@ nav {
 .nav-links a:hover { color: var(--ink); }
 
 /* Hero */
-.hero { padding: 5rem 0 4rem; }
-.hero-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 4rem; align-items: center; }
+.hero { padding: 2.5rem 0 3.5rem; }
+.hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3.5rem; align-items: start; }
 .hero h1 {
   font-family: var(--serif);
   font-weight: 800;
   font-variation-settings: "SOFT" 100;
-  font-size: clamp(2.6rem, 6vw, 4.4rem);
-  line-height: 1.04;
+  font-size: clamp(2.4rem, 5.2vw, 3.9rem);
+  line-height: 1.05;
   letter-spacing: -0.02em;
   margin-bottom: 1.6rem;
 }
@@ -90,7 +90,7 @@ nav {
 .btn-line:hover { background: var(--paper-2); }
 
 /* Framed photo + swatch strip: the one memorable element */
-.canvas { position: relative; }
+.canvas { position: relative; max-width: 330px; width: 100%; justify-self: end; margin-top: 0.5rem; }
 .frame {
   background: var(--paper-2);
   padding: 14px;
@@ -203,14 +203,14 @@ footer.site { padding: 2.5rem 0; color: var(--muted); font-size: 0.9rem; border-
 /* Responsive */
 @media (max-width: 900px) {
   .hero-grid, .studio-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .canvas { max-width: 420px; }
+  .canvas { max-width: 300px; justify-self: start; }
   .field-projects { grid-template-columns: 1fr; padding-left: 0; }
   .skills { grid-template-columns: 1fr 1fr; }
   .role { grid-template-columns: 1fr; gap: 0.4rem; }
 }
 @media (max-width: 620px) {
   .nav-links { display: none; }
-  .hero { padding-top: 3rem; }
+  .hero { padding-top: 2rem; }
   .skills { grid-template-columns: 1fr; }
   .swatch span { display: none; }
   .swatch-caption { margin-top: 1rem; }
@@ -243,9 +243,9 @@ footer.site { padding: 2.5rem 0; color: var(--muted); font-size: 0.9rem; border-
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <h1>I build AI that leaves the notebook, and I paint.</h1>
-      <p class="lede">I'm a final-year Computer Science student at Thapar Institute. I've built AI across language, vision, human signals, forecasting and security, and shipped it as apps, APIs, installers and a browser extension.</p>
-      <p class="meta">Based in Ludhiana, Punjab. B.Tech CSE, CGPA 8.72. Painting as @palette_by_arpita.</p>
+      <h1>I build AI that people actually get to use.</h1>
+      <p class="lede">A Hindi voice assistant, a webcam eye tracker, a fraud-ring detector, a pipeline that retrains itself. I take models past the notebook and ship them as apps, APIs, installers and browser extensions.</p>
+      <p class="meta">Final-year Computer Science student at Thapar Institute, based in Ludhiana. I also paint as @palette_by_arpita.</p>
       <div class="actions">
         <a class="btn btn-solid" href="#work">See my projects</a>
         <a class="btn btn-line" href="mailto:arpitasethi3105@gmail.com">Email me</a>
@@ -347,13 +347,13 @@ footer.site { padding: 2.5rem 0; color: var(--muted); font-size: 0.9rem; border-
         <span class="chip" style="background: var(--indigo)"></span>
         <div>
           <h3>Human signals</h3>
-          <p>Reading people through a webcam, a body pose or a brain signal.</p>
+          <p>Understanding people through a webcam and their body.</p>
         </div>
       </div>
       <div class="field-projects">
         <article class="proj">
           <h4>InsightUX</h4>
-          <p class="desc">An eye tracker built from scratch that works with any laptop webcam, so UX researchers can see where people look without special hardware. It ships as a Windows installer and is published on Hugging Face.</p>
+          <p class="desc">An eye tracker built from scratch that works with any laptop webcam, so researchers can see where people look without special hardware. Built with Thapar's TSLAS Neuromarketing research team, shipped as a Windows installer and published on Hugging Face.</p>
           <div class="numbers">
             <div><b>4.83°</b>mean gaze error on unseen users</div>
             <div><b>Under 5°</b>with just a laptop webcam</div>
@@ -362,12 +362,13 @@ footer.site { padding: 2.5rem 0; color: var(--muted); font-size: 0.9rem; border-
         </article>
         <article class="proj">
           <h4>AuraFlo pose coach</h4>
-          <p class="desc">A real-time yoga and wellness assistant that watches your posture through the camera and corrects it as you move, plus a breathing analyzer. I led the AI/ML team that built it.</p>
+          <p class="desc">A real-time yoga and wellness assistant that watches your posture through the camera and corrects it as you move, plus a breathing analyzer. I led the AI/ML team and built the backend behind it.</p>
           <div class="numbers">
-            <div><b>100+</b>live sessions</div>
-            <div><b>35%</b>higher inference throughput</div>
+            <div><b>100+</b>live user sessions</div>
+            <div><b>35%</b>lower query latency</div>
+            <div><b>85%+</b>test coverage on core services</div>
           </div>
-          <div class="stack"><span>MediaPipe</span><span>CNNs</span><span>FastAPI</span><span>Monitoring</span></div>
+          <div class="stack"><span>MediaPipe</span><span>CNNs</span><span>FastAPI</span><span>PostgreSQL</span><span>MongoDB</span><span>pytest</span></div>
         </article>
       </div>
     </div>
@@ -462,9 +463,14 @@ footer.site { padding: 2.5rem 0; color: var(--muted); font-size: 0.9rem; border-
           <div class="links"><a href="https://github.com/arpita-sethii/Ring-Sentinel" target="_blank" rel="noopener">GitHub</a></div>
         </article>
         <article class="proj">
-          <h4>SentryGen <small>In progress</small></h4>
-          <p class="desc">Turns raw network intrusion logs into detection rules a security team can deploy. It flags unusual traffic, maps each finding to a MITRE ATT&amp;CK technique and drafts a matching Sigma rule.</p>
-          <div class="stack"><span>Suricata</span><span>Isolation Forest</span><span>MITRE ATT&amp;CK</span><span>Sigma</span><span>FastAPI</span></div>
+          <h4>SentryGen</h4>
+          <p class="desc">Turns raw network intrusion logs into detection rules a security team can deploy. It flags unusual traffic as it arrives, enriches it with threat intelligence, maps each finding to a MITRE ATT&amp;CK technique and drafts a matching Sigma rule. Evaluated on the real NSL-KDD benchmark, not synthetic data.</p>
+          <div class="numbers">
+            <div><b>0.856</b>F1 score, up from 0.798</div>
+            <div><b>148K+</b>real network connections tested</div>
+            <div><b>Live</b>log ingestion and SIEM integration</div>
+          </div>
+          <div class="stack"><span>Suricata</span><span>Isolation Forest</span><span>XGBoost</span><span>MITRE ATT&amp;CK</span><span>Sigma</span><span>Wazuh</span><span>FastAPI</span></div>
         </article>
       </div>
     </div>
@@ -489,22 +495,14 @@ footer.site { padding: 2.5rem 0; color: var(--muted); font-size: 0.9rem; border-
     <h2 id="exp-title">Experience</h2>
 
     <div class="role">
-      <p class="when">Jul 2026 – present</p>
-      <div>
-        <h3>Product Management Intern</h3>
-        <p class="org">Omli Kids, an AI learning app for children</p>
-      </div>
-    </div>
-
-    <div class="role">
       <p class="when">Dec 2025 – present</p>
       <div>
-        <h3>Researcher, brain-computer interfaces</h3>
-        <p class="org">Thapar Institute faculty research</p>
+        <h3>Researcher, TSLAS Neuromarketing Research Team</h3>
+        <p class="org">Thapar Institute of Engineering and Technology</p>
         <ul>
-          <li>Model attention states from EEG, skin-response and eye-tracking signals.</li>
-          <li>Test how consistent and noise-sensitive these signals are when combined.</li>
-          <li>Designed SIGNAL, a teacher-student framework that decodes speech from a single muscle-signal (EMG) channel instead of many.</li>
+          <li>Building InsightUX, a webcam eye tracker that shows where people look on a screen, so the team can run attention studies without special hardware.</li>
+          <li>Own calibration and validation, reaching 4.83° mean gaze error on users the model had never seen.</li>
+          <li>Packaged the tool as a Windows installer and published it on Hugging Face for the team to use.</li>
         </ul>
       </div>
     </div>
@@ -515,9 +513,11 @@ footer.site { padding: 2.5rem 0; color: var(--muted); font-size: 0.9rem; border-
         <h3>AI/ML Team Lead</h3>
         <p class="org">AuraFlo, a Thapar Venture Lab startup</p>
         <ul>
-          <li>Led the team building a wellness assistant with real-time posture analysis, used across 100+ sessions.</li>
-          <li>Improved inference API throughput by 35% with FastAPI, plus logging and monitoring.</li>
-          <li>Set up evaluation pipelines to track model quality release over release.</li>
+          <li>Led the team building a real-time posture-correction and breathing assistant on MediaPipe, used across 100+ live sessions.</li>
+          <li>Shipped 15+ FastAPI endpoints for sessions, users and analytics, cutting app data-fetching time by 20%.</li>
+          <li>Reduced database query latency by 35% with indexing, query restructuring and connection pooling.</li>
+          <li>Moved AI-generated session data to MongoDB, making data retrieval 20% faster.</li>
+          <li>Reached 85%+ test coverage on core services with 60+ automated tests that gate every release.</li>
         </ul>
         <blockquote>
           <p>"Arpita has been an exceptional AI/ML Team Lead at AuraFlo, demonstrating outstanding technical expertise and leadership in developing our production ML-powered wellness assistant."</p>
@@ -535,7 +535,7 @@ footer.site { padding: 2.5rem 0; color: var(--muted); font-size: 0.9rem; border-
     <p class="intro">Grouped by the kind of problem they solve.</p>
     <div class="skills">
       <div><h3>Models and generative AI</h3><p>Open-source LLMs (Qwen), Whisper, DistilBERT, T5, Hugging Face, PyTorch, TensorFlow, fine-tuning, RAG with LangChain and FAISS</p></div>
-      <div><h3>Vision and signals</h3><p>OpenCV, DETR, SAM, EfficientNetV2, VAEs, MediaPipe, gaze estimation, EEG and EMG, quantization and ONNX for edge devices</p></div>
+      <div><h3>Vision and signals</h3><p>OpenCV, DETR, SAM, EfficientNetV2, VAEs, MediaPipe, gaze estimation, quantization and ONNX for edge devices</p></div>
       <div><h3>Automation and backend</h3><p>Python, FastAPI, REST APIs, WebSockets, SQL, PostgreSQL, MongoDB, drift detection, MLflow, automated testing with pytest</p></div>
       <div><h3>Build and ship</h3><p>Claude Code and other AI coding assistants, Git, Vercel, Render, AWS, PyInstaller installers</p></div>
       <div><h3>Security</h3><p>Suricata, MITRE ATT&amp;CK, Sigma rules, anomaly detection, fraud detection with graph models</p></div>
