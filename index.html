@@ -66,7 +66,7 @@ nav {
 .nav-links a:hover { color: var(--ink); }
 
 /* Hero */
-.hero { padding: 2.5rem 0 3.5rem; }
+.hero { padding: 2.5rem 0 2.5rem; }
 .hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3.5rem; align-items: start; }
 .hero h1 {
   font-family: var(--serif);
@@ -99,29 +99,30 @@ nav {
   box-shadow: 0 1px 0 var(--line), 0 24px 40px -24px rgba(30, 38, 33, 0.45);
 }
 .frame img { aspect-ratio: 4 / 5; object-fit: cover; width: 100%; border-radius: 2px; background: var(--line); }
-.swatches {
-  display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px;
-  margin-top: 1.2rem;
+.palette {
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  margin-top: 3.5rem; width: 100%;
 }
 .swatch {
-  display: block; text-decoration: none; height: 58px; border-radius: 4px;
-  position: relative;
-  opacity: 0; transform: translateY(10px);
+  display: flex; align-items: flex-end;
+  min-height: 120px; padding: 1rem 1.25rem;
+  background: var(--c); color: #1E2621;
+  text-decoration: none; font-weight: 500; font-size: 1rem;
+  opacity: 0; transform: translateY(12px);
   animation: dab 0.5s ease forwards;
+  transition: min-height 0.25s ease, filter 0.25s ease;
 }
-.swatch span {
-  position: absolute; left: 0; top: calc(100% + 6px);
-  font-size: 0.72rem; color: var(--muted); line-height: 1.2; width: 100%;
-}
-.swatch:hover { transform: translateY(-4px); }
-.swatch:nth-child(1) { background: var(--teal);   animation-delay: 0.10s; }
-.swatch:nth-child(2) { background: var(--rose);   animation-delay: 0.18s; }
-.swatch:nth-child(3) { background: var(--indigo); animation-delay: 0.26s; }
-.swatch:nth-child(4) { background: var(--ochre);  animation-delay: 0.34s; }
-.swatch:nth-child(5) { background: var(--sage);   animation-delay: 0.42s; }
-.swatch:nth-child(6) { background: var(--plum);   animation-delay: 0.50s; }
+.swatch:hover { min-height: 140px; filter: brightness(1.08); }
+.swatch:focus-visible { outline-offset: -4px; outline-color: #fff; }
+.swatch:nth-child(1) { animation-delay: 0.10s; }
+.swatch:nth-child(2) { animation-delay: 0.18s; }
+.swatch:nth-child(3) { animation-delay: 0.26s; }
+.swatch:nth-child(4) { animation-delay: 0.34s; }
+.swatch:nth-child(5) { animation-delay: 0.42s; }
+.swatch:nth-child(6) { animation-delay: 0.50s; }
 @keyframes dab { to { opacity: 1; transform: translateY(0); } }
-.swatch-caption { margin-top: 2.6rem; font-size: 0.85rem; color: var(--muted); }
+.palette { align-items: end; }
+.swatch-caption { margin-top: 1rem; font-size: 0.9rem; color: var(--muted); }
 
 /* Sections */
 section.block { padding: 5rem 0; border-top: 1px solid var(--line); }
@@ -212,14 +213,15 @@ footer.site { padding: 2.5rem 0; color: var(--muted); font-size: 0.9rem; border-
   .nav-links { display: none; }
   .hero { padding-top: 2rem; }
   .skills { grid-template-columns: 1fr; }
-  .swatch span { display: none; }
-  .swatch-caption { margin-top: 1rem; }
+  .palette { grid-template-columns: repeat(3, 1fr); }
+  .swatch { min-height: 84px; font-size: 0.92rem; }
+  .swatch:hover { min-height: 84px; }
   section.block { padding: 3.8rem 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .swatch { animation: none; opacity: 1; transform: none; }
-  .swatch:hover { transform: none; }
+  .swatch, .swatch:hover { transition: none; }
 }
 </style>
 </head>
@@ -256,17 +258,18 @@ footer.site { padding: 2.5rem 0; color: var(--muted); font-size: 0.9rem; border-
       <div class="frame">
         <img src="WhatsApp Image 2026-02-09 at 5.05.49 PM.jpeg" alt="Portrait of Arpita Sethi">
       </div>
-      <div class="swatches" aria-label="Jump to a field of work">
-        <a class="swatch" href="#field-language"><span>Language</span></a>
-        <a class="swatch" href="#field-vision"><span>Vision</span></a>
-        <a class="swatch" href="#field-signals"><span>Human signals</span></a>
-        <a class="swatch" href="#field-mlops"><span>MLOps</span></a>
-        <a class="swatch" href="#field-products"><span>Products</span></a>
-        <a class="swatch" href="#field-security"><span>Security</span></a>
-      </div>
-      <p class="swatch-caption">My working palette. Each colour is a field I build in; tap one to see the work.</p>
     </div>
   </div>
+
+  <div class="palette" role="navigation" aria-label="Jump to a field of work">
+    <a class="swatch" href="#field-language" style="--c: var(--teal); color: #fff">Language</a>
+    <a class="swatch" href="#field-vision" style="--c: var(--rose)">Vision</a>
+    <a class="swatch" href="#field-signals" style="--c: var(--indigo); color: #fff">Human signals</a>
+    <a class="swatch" href="#field-mlops" style="--c: var(--ochre)">MLOps</a>
+    <a class="swatch" href="#field-products" style="--c: var(--sage)">Products</a>
+    <a class="swatch" href="#field-security" style="--c: var(--plum); color: #fff">Security</a>
+  </div>
+  <p class="wrap swatch-caption">My working palette. Each colour is a field I build in; tap one to see the work.</p>
 </header>
 
 <!-- Work -->
